@@ -11,11 +11,10 @@ pragma solidity ^0.4.11;
 // assigns owner and only allows them to call the function 
 
 contract owned{
-  function owned () {owner = msg.sender;}
   address owner;
+  function owned () public {owner = msg.sender;}
   modifier onlyOwner {
-          if (msg.sender != owner)
-              throw;
+          reqiure(msg.sender == owner)
           _;
           }
   }
